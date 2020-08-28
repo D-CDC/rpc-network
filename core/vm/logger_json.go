@@ -22,8 +22,8 @@ import (
 	"math/big"
 	"time"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/common/math"
+	"ethereum/rpc-network/common"
+	"ethereum/rpc-network/common/math"
 )
 
 type JSONLogger struct {

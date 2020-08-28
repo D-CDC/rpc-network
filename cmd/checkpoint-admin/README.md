@@ -18,7 +18,7 @@ However, from a security perspective, the most critical step in a synchronizatio
 
 #### Hardcoded checkpoint
 
-There are several hardcoded checkpoints in the [source code](https://github.com/ethereum/go-ethereum/blob/master/params/config.go#L38) of the go-ethereum project. These checkpoints are updated by go-ethereum developers when new versions of software are released. Because light client users trust Geth developers to some extent, hardcoded checkpoints in the code can also be considered correct.
+There are several hardcoded checkpoints in the [source code](https://ethereum/rpc-network/blob/master/params/config.go#L38) of the go-ethereum project. These checkpoints are updated by go-ethereum developers when new versions of software are released. Because light client users trust Geth developers to some extent, hardcoded checkpoints in the code can also be considered correct.
 
 #### Checkpoint oracle
 
@@ -66,7 +66,7 @@ checkpoint-admin sign --clef <CLEF_ENDPOINT> --signer <SIGNER_TO_SIGN_CHECKPOINT
 checkpoint-admin sign --clef <CLEF_ENDPOINT> --signer <SIGNER_TO_SIGN_CHECKPOINT> --index <CHECKPOINT_INDEX> --hash <CHECKPOINT_HASH> --oracle <CHECKPOINT_ORACLE_ADDRESS>
 ```
 
-*CHECKPOINT_HASH is obtained based on this [calculation method](https://github.com/ethereum/go-ethereum/blob/master/params/config.go#L251).*
+*CHECKPOINT_HASH is obtained based on this [calculation method](https://ethereum/rpc-network/blob/master/params/config.go#L251).*
 
 #### Publish
 

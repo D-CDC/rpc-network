@@ -39,7 +39,7 @@ import (
 	"math/big"
 	"testing"
 
-	"github.com/ethereum/go-ethereum/crypto"
+	"ethereum/rpc-network/crypto"
 )
 
 func TestKDF(t *testing.T) {

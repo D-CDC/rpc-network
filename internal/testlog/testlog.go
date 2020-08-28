@@ -21,7 +21,7 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/ethereum/go-ethereum/log"
+	"ethereum/rpc-network/log"
 )
 
 // Handler returns a log handler which logs to the unit test log of t.

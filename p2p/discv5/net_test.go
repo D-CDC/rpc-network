@@ -21,8 +21,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/crypto"
+	"ethereum/rpc-network/common"
+	"ethereum/rpc-network/crypto"
 )
 
 func TestNetwork_Lookup(t *testing.T) {

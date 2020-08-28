@@ -25,7 +25,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/ethereum/go-ethereum/metrics"
+	"ethereum/rpc-network/metrics"
 )
 
 func init() {

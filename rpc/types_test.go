@@ -20,8 +20,8 @@ import (
 	"encoding/json"
 	"testing"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/common/math"
+	"ethereum/rpc-network/common"
+	"ethereum/rpc-network/common/math"
 )
 
 func TestBlockNumberJSONUnmarshal(t *testing.T) {

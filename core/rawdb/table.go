@@ -17,7 +17,7 @@
 package rawdb
 
 import (
-	"github.com/ethereum/go-ethereum/ethdb"
+	"ethereum/rpc-network/ethdb"
 )
 
 // table is a wrapper around a database that prefixes each key access with a pre-

@@ -21,7 +21,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/ethereum/go-ethereum/log"
+	"ethereum/rpc-network/log"
 )
 
 // deployWallet creates a new web wallet based on some user input.

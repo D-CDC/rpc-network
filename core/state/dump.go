@@ -20,11 +20,11 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/common/hexutil"
-	"github.com/ethereum/go-ethereum/log"
-	"github.com/ethereum/go-ethereum/rlp"
-	"github.com/ethereum/go-ethereum/trie"
+	"ethereum/rpc-network/common"
+	"ethereum/rpc-network/common/hexutil"
+	"ethereum/rpc-network/log"
+	"ethereum/rpc-network/rlp"
+	"ethereum/rpc-network/trie"
 )
 
 // DumpCollector interface which the state trie calls during iteration

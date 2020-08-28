@@ -21,8 +21,8 @@ import (
 	"sort"
 	"sync"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/event"
+	"ethereum/rpc-network/common"
+	"ethereum/rpc-network/event"
 )
 
 // Config contains the settings of the global account manager.

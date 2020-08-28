@@ -25,7 +25,7 @@ import (
 	"io/ioutil"
 	"os"
 
-	"github.com/ethereum/go-ethereum/log"
+	"ethereum/rpc-network/log"
 )
 
 type storedCredential struct {

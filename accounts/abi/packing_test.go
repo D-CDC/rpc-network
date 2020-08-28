@@ -19,7 +19,7 @@ package abi
 import (
 	"math/big"
 
-	"github.com/ethereum/go-ethereum/common"
+	"ethereum/rpc-network/common"
 )
 
 type packUnpackTest struct {

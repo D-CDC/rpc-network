@@ -26,7 +26,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/ethereum/go-ethereum/common"
+	"ethereum/rpc-network/common"
 	"github.com/stretchr/testify/require"
 )
 

@@ -23,9 +23,9 @@ import (
 	"testing"
 
 	"github.com/davecgh/go-spew/spew"
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/ethereum/go-ethereum/rlp"
+	"ethereum/rpc-network/common"
+	"ethereum/rpc-network/crypto"
+	"ethereum/rpc-network/rlp"
 )
 
 // EIP-8 test vectors.

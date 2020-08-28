@@ -20,9 +20,9 @@ import (
 	"hash"
 	"sync/atomic"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/common/math"
-	"github.com/ethereum/go-ethereum/log"
+	"ethereum/rpc-network/common"
+	"ethereum/rpc-network/common/math"
+	"ethereum/rpc-network/log"
 )
 
 // Config are the configuration options for the Interpreter
