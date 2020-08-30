@@ -19,7 +19,7 @@ package vm
 import (
 	"math/big"
 
-	"ethereum/rpc-network/common"
+	"github.com/ethereum/go-ethereum/common"
 	"github.com/holiman/uint256"
 )
 

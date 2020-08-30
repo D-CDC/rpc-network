@@ -4,7 +4,7 @@ import (
 	"math/big"
 	"testing"
 
-	"ethereum/rpc-network/common"
+	"github.com/ethereum/go-ethereum/common"
 )
 
 func TestPairingExpected(t *testing.T) {

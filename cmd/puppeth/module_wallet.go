@@ -25,7 +25,7 @@ import (
 	"strconv"
 	"strings"
 
-	"ethereum/rpc-network/log"
+	"github.com/ethereum/go-ethereum/log"
 )
 
 // walletDockerfile is the Dockerfile required to run a web wallet.

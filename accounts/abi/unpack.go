@@ -22,7 +22,7 @@ import (
 	"math/big"
 	"reflect"
 
-	"ethereum/rpc-network/common"
+	"github.com/ethereum/go-ethereum/common"
 )
 
 var (

@@ -23,7 +23,7 @@ import (
 	"os"
 	"runtime/trace"
 
-	"ethereum/rpc-network/log"
+	"github.com/ethereum/go-ethereum/log"
 )
 
 // StartGoTrace turns on tracing, writing to the given file.

@@ -25,7 +25,7 @@ import (
 	"net"
 	"sort"
 
-	"ethereum/rpc-network/common"
+	"github.com/ethereum/go-ethereum/common"
 )
 
 const (

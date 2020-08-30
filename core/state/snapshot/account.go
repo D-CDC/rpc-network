@@ -20,8 +20,8 @@ import (
 	"bytes"
 	"math/big"
 
-	"ethereum/rpc-network/common"
-	"ethereum/rpc-network/rlp"
+	"github.com/ethereum/go-ethereum/common"
+	"github.com/ethereum/go-ethereum/rlp"
 )
 
 // Account is a modified version of a state.Account, where the root is replaced

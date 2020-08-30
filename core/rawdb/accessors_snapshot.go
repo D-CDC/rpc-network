@@ -17,9 +17,9 @@
 package rawdb
 
 import (
-	"ethereum/rpc-network/common"
-	"ethereum/rpc-network/ethdb"
-	"ethereum/rpc-network/log"
+	"github.com/ethereum/go-ethereum/common"
+	"github.com/ethereum/go-ethereum/ethdb"
+	"github.com/ethereum/go-ethereum/log"
 )
 
 // ReadSnapshotRoot retrieves the root of the block whose state is contained in

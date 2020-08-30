@@ -28,7 +28,7 @@ import (
 	"sync/atomic"
 	"time"
 
-	"ethereum/rpc-network/log"
+	"github.com/ethereum/go-ethereum/log"
 )
 
 var (

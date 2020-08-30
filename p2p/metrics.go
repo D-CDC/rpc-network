@@ -21,7 +21,7 @@ package p2p
 import (
 	"net"
 
-	"ethereum/rpc-network/metrics"
+	"github.com/ethereum/go-ethereum/metrics"
 )
 
 const (

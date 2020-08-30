@@ -26,8 +26,8 @@ import (
 	"strings"
 	"text/template"
 
-	"ethereum/rpc-network/common"
-	"ethereum/rpc-network/log"
+	"github.com/ethereum/go-ethereum/common"
+	"github.com/ethereum/go-ethereum/log"
 )
 
 // nodeDockerfile is the Dockerfile required to run an Ethereum node.

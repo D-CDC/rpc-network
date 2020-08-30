@@ -21,8 +21,8 @@ import (
 	"fmt"
 	"math/big"
 
-	"ethereum/rpc-network/common"
-	"ethereum/rpc-network/crypto"
+	"github.com/ethereum/go-ethereum/common"
+	"github.com/ethereum/go-ethereum/crypto"
 )
 
 // Genesis hashes to enforce below configs on.

@@ -19,7 +19,7 @@ package snapshot
 import (
 	"bytes"
 
-	"ethereum/rpc-network/common"
+	"github.com/ethereum/go-ethereum/common"
 )
 
 // binaryIterator is a simplistic iterator to step over the accounts or storage

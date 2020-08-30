@@ -21,8 +21,8 @@ import (
 	"testing"
 	"time"
 
-	"ethereum/rpc-network/common"
-	"ethereum/rpc-network/common/mclock"
+	"github.com/ethereum/go-ethereum/common"
+	"github.com/ethereum/go-ethereum/common/mclock"
 )
 
 func TestTopicRadius(t *testing.T) {

@@ -24,11 +24,11 @@ import (
 	"sync/atomic"
 	"time"
 
-	"ethereum/rpc-network/common"
-	"ethereum/rpc-network/ethdb"
-	"ethereum/rpc-network/ethdb/leveldb"
-	"ethereum/rpc-network/ethdb/memorydb"
-	"ethereum/rpc-network/log"
+	"github.com/ethereum/go-ethereum/common"
+	"github.com/ethereum/go-ethereum/ethdb"
+	"github.com/ethereum/go-ethereum/ethdb/leveldb"
+	"github.com/ethereum/go-ethereum/ethdb/memorydb"
+	"github.com/ethereum/go-ethereum/log"
 	"github.com/olekukonko/tablewriter"
 )
 

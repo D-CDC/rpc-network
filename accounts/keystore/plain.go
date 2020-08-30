@@ -22,7 +22,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"ethereum/rpc-network/common"
+	"github.com/ethereum/go-ethereum/common"
 )
 
 type keyStorePlain struct {

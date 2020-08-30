@@ -21,8 +21,8 @@ import (
 	"bytes"
 	"encoding/binary"
 
-	"ethereum/rpc-network/common"
-	"ethereum/rpc-network/metrics"
+	"github.com/ethereum/go-ethereum/common"
+	"github.com/ethereum/go-ethereum/metrics"
 )
 
 // The fields below define the low level database schema prefixing.

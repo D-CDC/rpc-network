@@ -6,7 +6,7 @@ import (
 	"math/big"
 	"testing"
 
-	"ethereum/rpc-network/common"
+	"github.com/ethereum/go-ethereum/common"
 )
 
 func (g *G2) one() *PointG2 {

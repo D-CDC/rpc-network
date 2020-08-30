@@ -26,7 +26,7 @@ import (
 	"os"
 	"strings"
 
-	"ethereum/rpc-network/rlp"
+	"github.com/ethereum/go-ethereum/rlp"
 )
 
 var (

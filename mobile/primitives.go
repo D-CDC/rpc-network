@@ -22,7 +22,7 @@ import (
 	"errors"
 	"fmt"
 
-	"ethereum/rpc-network/common"
+	"github.com/ethereum/go-ethereum/common"
 )
 
 // Strings represents s slice of strs.

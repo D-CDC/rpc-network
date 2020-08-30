@@ -21,7 +21,7 @@ import (
 	"fmt"
 	"time"
 
-	"ethereum/rpc-network/log"
+	"github.com/ethereum/go-ethereum/log"
 )
 
 // deployExplorer creates a new block explorer based on some user input.

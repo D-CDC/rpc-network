@@ -24,9 +24,9 @@ import (
 	"testing"
 	"time"
 
-	"ethereum/rpc-network/common"
-	"ethereum/rpc-network/crypto"
-	"ethereum/rpc-network/rlp"
+	"github.com/ethereum/go-ethereum/common"
+	"github.com/ethereum/go-ethereum/crypto"
+	"github.com/ethereum/go-ethereum/rlp"
 )
 
 // The values in those tests are from the Transaction Tests

@@ -28,9 +28,9 @@ import (
 	"sync/atomic"
 	"time"
 
-	"ethereum/rpc-network/common"
-	"ethereum/rpc-network/event"
-	"ethereum/rpc-network/log"
+	"github.com/ethereum/go-ethereum/common"
+	"github.com/ethereum/go-ethereum/event"
+	"github.com/ethereum/go-ethereum/log"
 )
 
 const (

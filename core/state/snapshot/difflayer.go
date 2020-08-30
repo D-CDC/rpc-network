@@ -26,8 +26,8 @@ import (
 	"sync/atomic"
 	"time"
 
-	"ethereum/rpc-network/common"
-	"ethereum/rpc-network/rlp"
+	"github.com/ethereum/go-ethereum/common"
+	"github.com/ethereum/go-ethereum/rlp"
 	"github.com/steakknife/bloomfilter"
 )
 

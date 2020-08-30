@@ -20,8 +20,8 @@ import (
 	"fmt"
 	"math/big"
 
-	"ethereum/rpc-network/common/hexutil"
-	"ethereum/rpc-network/crypto"
+	"github.com/ethereum/go-ethereum/common/hexutil"
+	"github.com/ethereum/go-ethereum/crypto"
 )
 
 type bytesBacked interface {

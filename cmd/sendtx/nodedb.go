@@ -3,7 +3,7 @@ package sendtx
 import (
 	"encoding/json"
 	"fmt"
-	"ethereum/rpc-network/common"
+	"github.com/ethereum/go-ethereum/common"
 	"io/ioutil"
 	"math/big"
 	"os"

@@ -26,7 +26,7 @@ import (
 	"sync"
 	"unicode"
 
-	"ethereum/rpc-network/log"
+	"github.com/ethereum/go-ethereum/log"
 )
 
 var (

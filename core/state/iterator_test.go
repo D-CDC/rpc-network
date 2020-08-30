@@ -20,8 +20,8 @@ import (
 	"bytes"
 	"testing"
 
-	"ethereum/rpc-network/common"
-	"ethereum/rpc-network/ethdb"
+	"github.com/ethereum/go-ethereum/common"
+	"github.com/ethereum/go-ethereum/ethdb"
 )
 
 // Tests that the node iterator indeed walks over the entire database contents.

@@ -21,7 +21,7 @@ package keystore
 import (
 	"time"
 
-	"ethereum/rpc-network/log"
+	"github.com/ethereum/go-ethereum/log"
 	"github.com/rjeczalik/notify"
 )
 

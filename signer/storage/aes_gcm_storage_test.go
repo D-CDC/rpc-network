@@ -23,8 +23,8 @@ import (
 	"io/ioutil"
 	"testing"
 
-	"ethereum/rpc-network/common"
-	"ethereum/rpc-network/log"
+	"github.com/ethereum/go-ethereum/common"
+	"github.com/ethereum/go-ethereum/log"
 	"github.com/mattn/go-colorable"
 )
 

@@ -24,7 +24,7 @@ import (
 	"testing"
 	"time"
 
-	"ethereum/rpc-network/rlp"
+	"github.com/ethereum/go-ethereum/rlp"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )

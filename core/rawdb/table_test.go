@@ -20,7 +20,7 @@ import (
 	"bytes"
 	"testing"
 
-	"ethereum/rpc-network/ethdb"
+	"github.com/ethereum/go-ethereum/ethdb"
 )
 
 func TestTableDatabase(t *testing.T)            { testTableDatabase(t, "prefix") }

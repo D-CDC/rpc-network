@@ -19,7 +19,7 @@ package main
 import (
 	"fmt"
 
-	"ethereum/rpc-network/log"
+	"github.com/ethereum/go-ethereum/log"
 )
 
 // deployDashboard queries the user for various input on deploying a web-service

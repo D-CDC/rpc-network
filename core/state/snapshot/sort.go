@@ -19,7 +19,7 @@ package snapshot
 import (
 	"bytes"
 
-	"ethereum/rpc-network/common"
+	"github.com/ethereum/go-ethereum/common"
 )
 
 // hashes is a helper to implement sort.Interface.

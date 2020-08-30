@@ -19,9 +19,9 @@ package types
 import (
 	"io"
 
-	"ethereum/rpc-network/common"
-	"ethereum/rpc-network/common/hexutil"
-	"ethereum/rpc-network/rlp"
+	"github.com/ethereum/go-ethereum/common"
+	"github.com/ethereum/go-ethereum/common/hexutil"
+	"github.com/ethereum/go-ethereum/rlp"
 )
 
 //go:generate gencodec -type Log -field-override logMarshaling -out gen_log_json.go

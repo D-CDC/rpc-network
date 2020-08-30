@@ -23,7 +23,7 @@ import (
 	"strings"
 	"time"
 
-	"ethereum/rpc-network/log"
+	"github.com/ethereum/go-ethereum/log"
 	"gopkg.in/urfave/cli.v1"
 )
 

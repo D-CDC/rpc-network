@@ -20,7 +20,7 @@ import (
 	"sync"
 	"time"
 
-	"ethereum/rpc-network/common/mclock"
+	"github.com/ethereum/go-ethereum/common/mclock"
 )
 
 const (

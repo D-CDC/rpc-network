@@ -26,8 +26,8 @@ import (
 	"sync/atomic"
 	"time"
 
-	"ethereum/rpc-network/common/bitutil"
-	"ethereum/rpc-network/crypto"
+	"github.com/ethereum/go-ethereum/common/bitutil"
+	"github.com/ethereum/go-ethereum/crypto"
 )
 
 // bloomIndexes represents the bit indexes inside the bloom filter that belong

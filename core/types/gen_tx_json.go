@@ -7,8 +7,8 @@ import (
 	"errors"
 	"math/big"
 
-	"ethereum/rpc-network/common"
-	"ethereum/rpc-network/common/hexutil"
+	"github.com/ethereum/go-ethereum/common"
+	"github.com/ethereum/go-ethereum/common/hexutil"
 )
 
 var _ = (*txdataMarshaling)(nil)

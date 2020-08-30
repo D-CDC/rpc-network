@@ -27,10 +27,10 @@ import (
 	"time"
 	"unsafe"
 
-	"ethereum/rpc-network/common"
-	"ethereum/rpc-network/common/bitutil"
-	"ethereum/rpc-network/crypto"
-	"ethereum/rpc-network/log"
+	"github.com/ethereum/go-ethereum/common"
+	"github.com/ethereum/go-ethereum/common/bitutil"
+	"github.com/ethereum/go-ethereum/crypto"
+	"github.com/ethereum/go-ethereum/log"
 	"golang.org/x/crypto/sha3"
 )
 

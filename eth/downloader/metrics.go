@@ -19,7 +19,7 @@
 package downloader
 
 import (
-	"ethereum/rpc-network/metrics"
+	"github.com/ethereum/go-ethereum/metrics"
 )
 
 var (

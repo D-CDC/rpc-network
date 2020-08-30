@@ -26,7 +26,7 @@ import (
 	"sync"
 	"time"
 
-	"ethereum/rpc-network/rlp"
+	"github.com/ethereum/go-ethereum/rlp"
 	"github.com/syndtr/goleveldb/leveldb"
 	"github.com/syndtr/goleveldb/leveldb/errors"
 	"github.com/syndtr/goleveldb/leveldb/iterator"

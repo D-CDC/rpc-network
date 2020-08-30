@@ -24,8 +24,8 @@ import (
 	"fmt"
 	"strings"
 
-	"ethereum/rpc-network/common"
-	"ethereum/rpc-network/common/hexutil"
+	"github.com/ethereum/go-ethereum/common"
+	"github.com/ethereum/go-ethereum/common/hexutil"
 )
 
 // Hash represents the 32 byte Keccak256 hash of arbitrary data.

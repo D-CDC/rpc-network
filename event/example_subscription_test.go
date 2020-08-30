@@ -19,7 +19,7 @@ package event_test
 import (
 	"fmt"
 
-	"ethereum/rpc-network/event"
+	"github.com/ethereum/go-ethereum/event"
 )
 
 func ExampleNewSubscription() {

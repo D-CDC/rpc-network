@@ -6,8 +6,8 @@ import (
 	"encoding/json"
 	"errors"
 
-	"ethereum/rpc-network/common"
-	"ethereum/rpc-network/common/hexutil"
+	"github.com/ethereum/go-ethereum/common"
+	"github.com/ethereum/go-ethereum/common/hexutil"
 )
 
 var _ = (*logMarshaling)(nil)

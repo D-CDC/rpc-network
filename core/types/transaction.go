@@ -24,10 +24,10 @@ import (
 	"sync/atomic"
 	"time"
 
-	"ethereum/rpc-network/common"
-	"ethereum/rpc-network/common/hexutil"
-	"ethereum/rpc-network/crypto"
-	"ethereum/rpc-network/rlp"
+	"github.com/ethereum/go-ethereum/common"
+	"github.com/ethereum/go-ethereum/common/hexutil"
+	"github.com/ethereum/go-ethereum/crypto"
+	"github.com/ethereum/go-ethereum/rlp"
 )
 
 //go:generate gencodec -type txdata -field-override txdataMarshaling -out gen_tx_json.go

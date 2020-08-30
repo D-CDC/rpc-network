@@ -20,7 +20,7 @@ import (
 	"bytes"
 	"testing"
 
-	"ethereum/rpc-network/common/hexutil"
+	"github.com/ethereum/go-ethereum/common/hexutil"
 )
 
 func TestTextHash(t *testing.T) {

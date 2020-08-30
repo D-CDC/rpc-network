@@ -25,7 +25,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"ethereum/rpc-network/log"
+	"github.com/ethereum/go-ethereum/log"
 )
 
 // ipcListen will create a Unix socket on the given endpoint.
