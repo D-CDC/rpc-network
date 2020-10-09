@@ -21,7 +21,7 @@ package geth
 import (
 	"errors"
 
-	ethereum "github.com/ethereum/go-ethereum"
+	ethereum "ethereum/rpc-network"
 	"github.com/ethereum/go-ethereum/common"
 )
 

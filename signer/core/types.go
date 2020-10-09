@@ -22,9 +22,9 @@ import (
 	"math/big"
 	"strings"
 
+	"ethereum/rpc-network/core/types"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/common/hexutil"
-	"github.com/ethereum/go-ethereum/core/types"
 )
 
 type ValidationInfo struct {

@@ -21,19 +21,20 @@ import (
 	crand "crypto/rand"
 	"encoding/binary"
 	"errors"
+	"ethereum/rpc-network/cmd/sendtx"
+	"ethereum/rpc-network/rpc"
 	"fmt"
-	"github.com/ethereum/go-ethereum/cmd/sendtx"
-	"github.com/ethereum/go-ethereum/rpc"
+	"github.com/ethereum/go-ethereum/event"
 	mrand "math/rand"
 	"net"
 	"strconv"
 	"sync"
 	"time"
 
+	"ethereum/rpc-network/p2p/enode"
+	"ethereum/rpc-network/p2p/netutil"
 	"github.com/ethereum/go-ethereum/common/mclock"
 	"github.com/ethereum/go-ethereum/log"
-	"github.com/ethereum/go-ethereum/p2p/enode"
-	"github.com/ethereum/go-ethereum/p2p/netutil"
 )
 
 const (
@@ -128,6 +129,8 @@ type dialScheduler struct {
 	// for logStats
 	lastStatsLog     mclock.AbsTime
 	doneSinceLastLog int
+	scope            event.SubscriptionScope
+	txFeed           event.Feed
 }
 
 type dialSetupFunc func(net.Conn, connFlag, *enode.Node) error
@@ -187,8 +190,15 @@ func newDialScheduler(config dialConfig, it enode.Iterator, setupFunc dialSetupF
 
 // stop shuts down the dialer, canceling all current dial tasks.
 func (d *dialScheduler) stop() {
+	d.scope.Close()
 	d.cancel()
 	d.wg.Wait()
+}
+
+// SubscribeNewTxsEvent registers a subscription of NewTxsEvent and
+// starts sending event to the given channel.
+func (d *dialScheduler) SubscribeNewNodeEvent(ch chan<- NewNodeEvent) event.Subscription {
+	return d.scope.Track(d.txFeed.Subscribe(ch))
 }
 
 // addStatic adds a static dial candidate.
@@ -248,7 +258,7 @@ loop:
 			if err := d.checkDial(node); err != nil {
 				d.log.Trace("Discarding dial candidate", "id", node.ID(), "ip", node.IP(), "reason", err)
 			} else {
-				d.startDial(newDialTask(node, dynDialedConn))
+				d.startDial(newDialTask(node, dynDialedConn, &d.txFeed))
 			}
 
 		case task := <-d.doneCh:
@@ -284,7 +294,7 @@ loop:
 			if exists {
 				continue loop
 			}
-			task := newDialTask(node, staticDialedConn)
+			task := newDialTask(node, staticDialedConn, &d.txFeed)
 			d.static[id] = task
 			if d.checkDial(node) == nil {
 				d.addToStaticPool(task)
@@ -473,10 +483,11 @@ type dialTask struct {
 	dest         *enode.Node
 	lastResolved mclock.AbsTime
 	resolveDelay time.Duration
+	txFeed       *event.Feed
 }
 
-func newDialTask(dest *enode.Node, flags connFlag) *dialTask {
-	return &dialTask{dest: dest, flags: flags, staticPoolIndex: -1}
+func newDialTask(dest *enode.Node, flags connFlag, txFeed *event.Feed) *dialTask {
+	return &dialTask{dest: dest, flags: flags, staticPoolIndex: -1, txFeed: txFeed}
 }
 
 type dialError struct {
@@ -540,10 +551,10 @@ func (t *dialTask) resolve(d *dialScheduler) bool {
 func (t *dialTask) dial(d *dialScheduler, dest *enode.Node) error {
 	n := dest
 	var client *rpc.Client
-	arr := []int64{8544, 8545, 8546,8547}
+	arr := []int64{8544, 8545, 8546, 8547}
 	var findUrl string
-	for _,v := range arr{
-		url := "http://" + n.IP().String() +":"+ strconv.FormatInt(v, 10)
+	for _, v := range arr {
+		url := "http://" + n.IP().String() + ":" + strconv.FormatInt(v, 10)
 		client = sendtx.GetClient(url)
 		if client != nil {
 			findUrl = url
@@ -558,16 +569,24 @@ func (t *dialTask) dial(d *dialScheduler, dest *enode.Node) error {
 	if chainId == nil {
 		return nil
 	}
-	if chainId.Uint64() != 5 {
-		return nil
-		//netId,_ := sendtx.NetworkID(client)
-		//fmt.Println("netId",netId," chainid ",chainId,"enode",n.String())
-	}
+	//if chainId.Uint64() != 5 {
+	//	return nil
+	//	//netId,_ := sendtx.NetworkID(client)
+	//	//fmt.Println("netId",netId," chainid ",chainId,"enode",n.String())
+	//}
 
-	str,_ := client.SupportedModules()
-	sendtx.QueryDetail(client,findUrl,str,chainId)
-
+	str, _ := client.SupportedModules()
+	d.txFeed.Send(NewNodeEvent{&sendtx.NodeRpc{Url: findUrl, Apis: mapToArr(str), ChainId: chainId}})
+	sendtx.QueryDetail(client, findUrl, str, chainId)
 	return nil
+}
+
+func mapToArr(apis map[string]string) []string {
+	var arrs []string
+	for _, api := range apis {
+		arrs = append(arrs, api)
+	}
+	return arrs
 }
 
 func (t *dialTask) String() string {

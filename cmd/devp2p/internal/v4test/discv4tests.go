@@ -24,9 +24,9 @@ import (
 	"reflect"
 	"time"
 
+	"ethereum/rpc-network/internal/utesting"
+	"ethereum/rpc-network/p2p/discover/v4wire"
 	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/ethereum/go-ethereum/internal/utesting"
-	"github.com/ethereum/go-ethereum/p2p/discover/v4wire"
 )
 
 const (

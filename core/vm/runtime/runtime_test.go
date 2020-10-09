@@ -24,16 +24,16 @@ import (
 	"testing"
 	"time"
 
-	"github.com/ethereum/go-ethereum/accounts/abi"
+	"ethereum/rpc-network/accounts/abi"
+	"ethereum/rpc-network/consensus"
+	"ethereum/rpc-network/core"
+	"ethereum/rpc-network/core/asm"
+	"ethereum/rpc-network/core/rawdb"
+	"ethereum/rpc-network/core/state"
+	"ethereum/rpc-network/core/types"
+	"ethereum/rpc-network/core/vm"
+	"ethereum/rpc-network/params"
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/consensus"
-	"github.com/ethereum/go-ethereum/core"
-	"github.com/ethereum/go-ethereum/core/asm"
-	"github.com/ethereum/go-ethereum/core/rawdb"
-	"github.com/ethereum/go-ethereum/core/state"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/core/vm"
-	"github.com/ethereum/go-ethereum/params"
 )
 
 func TestDefaults(t *testing.T) {

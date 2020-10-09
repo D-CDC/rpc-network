@@ -20,10 +20,10 @@ import (
 	"context"
 	"time"
 
+	"ethereum/rpc-network/core"
+	"ethereum/rpc-network/light"
 	"github.com/ethereum/go-ethereum/common/mclock"
-	"github.com/ethereum/go-ethereum/core"
 	"github.com/ethereum/go-ethereum/ethdb"
-	"github.com/ethereum/go-ethereum/light"
 	"github.com/ethereum/go-ethereum/log"
 )
 

@@ -17,8 +17,8 @@
 package les
 
 import (
+	"ethereum/rpc-network/p2p"
 	"github.com/ethereum/go-ethereum/metrics"
-	"github.com/ethereum/go-ethereum/p2p"
 )
 
 var (

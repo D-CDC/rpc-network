@@ -20,7 +20,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/ethereum/go-ethereum/core/vm"
+	"ethereum/rpc-network/core/vm"
 	"github.com/ethereum/go-ethereum/tests"
 	"gopkg.in/urfave/cli.v1"
 )
@@ -41,6 +41,11 @@ var (
 	TraceDisableReturnDataFlag = cli.BoolFlag{
 		Name:  "trace.noreturndata",
 		Usage: "Disable return data output in traces",
+	}
+	OutputBasedir = cli.StringFlag{
+		Name:  "output.basedir",
+		Usage: "Specifies where output files are placed. Will be created if it does not exist.",
+		Value: "",
 	}
 	OutputAllocFlag = cli.StringFlag{
 		Name: "output.alloc",

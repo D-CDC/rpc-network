@@ -25,10 +25,10 @@ import (
 	"strings"
 	"time"
 
+	"ethereum/rpc-network/core/types"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/common/hexutil"
 	"github.com/ethereum/go-ethereum/common/math"
-	"github.com/ethereum/go-ethereum/core/types"
 )
 
 var errTraceLimitReached = errors.New("the number of logs reached the specified limit")

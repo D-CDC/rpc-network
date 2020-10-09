@@ -22,11 +22,11 @@ import (
 	"testing"
 	"time"
 
-	"github.com/ethereum/go-ethereum/accounts/abi/bind"
-	"github.com/ethereum/go-ethereum/core"
+	"ethereum/rpc-network/accounts/abi/bind"
+	"ethereum/rpc-network/core"
+	"ethereum/rpc-network/light"
+	"ethereum/rpc-network/params"
 	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/ethereum/go-ethereum/light"
-	"github.com/ethereum/go-ethereum/params"
 )
 
 // Test light syncing which will download all headers from genesis.

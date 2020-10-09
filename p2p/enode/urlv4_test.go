@@ -24,8 +24,8 @@ import (
 	"strings"
 	"testing"
 
+	"ethereum/rpc-network/p2p/enr"
 	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/ethereum/go-ethereum/p2p/enr"
 )
 
 func init() {

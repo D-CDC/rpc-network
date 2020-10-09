@@ -22,7 +22,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/ethereum/go-ethereum/les/utils"
+	"ethereum/rpc-network/les/utils"
 )
 
 func TestTransition(t *testing.T) {

@@ -22,13 +22,13 @@ import (
 	"testing"
 	"time"
 
+	"ethereum/rpc-network/core/bloombits"
+	"ethereum/rpc-network/core/rawdb"
+	"ethereum/rpc-network/core/types"
+	"ethereum/rpc-network/node"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/common/bitutil"
-	"github.com/ethereum/go-ethereum/core/bloombits"
-	"github.com/ethereum/go-ethereum/core/rawdb"
-	"github.com/ethereum/go-ethereum/core/types"
 	"github.com/ethereum/go-ethereum/ethdb"
-	"github.com/ethereum/go-ethereum/node"
 )
 
 func BenchmarkBloomBits512(b *testing.B) {

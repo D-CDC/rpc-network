@@ -29,10 +29,10 @@ import (
 	"path/filepath"
 	"time"
 
+	"ethereum/rpc-network/core"
+	"ethereum/rpc-network/params"
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/core"
 	"github.com/ethereum/go-ethereum/log"
-	"github.com/ethereum/go-ethereum/params"
 )
 
 // makeGenesis creates a new genesis struct based on some user input.

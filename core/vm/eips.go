@@ -20,7 +20,7 @@ import (
 	"fmt"
 	"sort"
 
-	"github.com/ethereum/go-ethereum/params"
+	"ethereum/rpc-network/params"
 	"github.com/holiman/uint256"
 )
 

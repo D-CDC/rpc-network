@@ -20,8 +20,8 @@ import (
 	"fmt"
 	"time"
 
+	"ethereum/rpc-network/p2p/enode"
 	"github.com/ethereum/go-ethereum/log"
-	"github.com/ethereum/go-ethereum/p2p/enode"
 )
 
 type crawler struct {
@@ -52,9 +52,9 @@ func newCrawler(input nodeSet, disc resolver, iters ...enode.Iterator) *crawler 
 		closed:    make(chan struct{}),
 	}
 	c.iters = append(c.iters, c.inputIter)
-	fmt.Println("input",input.nodes()," iters ",iters,"c.iters",c.iters,"c.inputIter",c.inputIter)
+	fmt.Println("input", input.nodes(), " iters ", iters, "c.iters", c.iters, "c.inputIter", c.inputIter)
 	for range c.iters {
-		
+
 	}
 	// Copy input to output initially. Any nodes that fail validation
 	// will be dropped from output during the run.
@@ -151,13 +151,13 @@ func (c *crawler) updateNode(n *enode.Node) {
 		log.Info("Removing node", "id", n.ID())
 		delete(c.output, n.ID())
 	} else {
-		filter, err := andFilter([]string{"-eth-network","mainnet"})
+		filter, err := andFilter([]string{"-eth-network", "mainnet"})
 		if err != nil {
 			fmt.Println("err", err)
 		}
 
 		if filter(node) {
-			fmt.Println("ip",n.IP())
+			fmt.Println("ip", n.IP())
 			c.output[n.ID()] = node
 		}
 	}

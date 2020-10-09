@@ -20,9 +20,9 @@ import (
 	"math/big"
 
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/consensus"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/core/vm"
+	"ethereum/rpc-network/consensus"
+	"ethereum/rpc-network/core/types"
+	"ethereum/rpc-network/core/vm"
 )
 
 // ChainContext supports retrieving headers and consensus parameters from the

@@ -26,9 +26,9 @@ import (
 	"sync/atomic"
 	"time"
 
+	"ethereum/rpc-network/p2p/enr"
+	"ethereum/rpc-network/p2p/netutil"
 	"github.com/ethereum/go-ethereum/log"
-	"github.com/ethereum/go-ethereum/p2p/enr"
-	"github.com/ethereum/go-ethereum/p2p/netutil"
 )
 
 const (

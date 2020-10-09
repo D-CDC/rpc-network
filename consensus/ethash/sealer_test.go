@@ -25,9 +25,9 @@ import (
 	"testing"
 	"time"
 
+	"ethereum/rpc-network/core/types"
+	"ethereum/rpc-network/internal/testlog"
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/internal/testlog"
 	"github.com/ethereum/go-ethereum/log"
 )
 

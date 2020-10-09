@@ -22,9 +22,9 @@ import (
 	"math/big"
 	"os"
 
-	"github.com/ethereum/go-ethereum/cmd/evm/internal/t8ntool"
-	"github.com/ethereum/go-ethereum/cmd/utils"
-	"github.com/ethereum/go-ethereum/internal/flags"
+	"ethereum/rpc-network/cmd/evm/internal/t8ntool"
+	"ethereum/rpc-network/cmd/utils"
+	"ethereum/rpc-network/internal/flags"
 	"gopkg.in/urfave/cli.v1"
 )
 
@@ -146,6 +146,7 @@ var stateTransitionCommand = cli.Command{
 		t8ntool.TraceDisableMemoryFlag,
 		t8ntool.TraceDisableStackFlag,
 		t8ntool.TraceDisableReturnDataFlag,
+		t8ntool.OutputBasedir,
 		t8ntool.OutputAllocFlag,
 		t8ntool.OutputResultFlag,
 		t8ntool.InputAllocFlag,

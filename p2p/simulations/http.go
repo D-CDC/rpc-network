@@ -29,11 +29,11 @@ import (
 	"strings"
 	"sync"
 
+	"ethereum/rpc-network/p2p"
+	"ethereum/rpc-network/p2p/enode"
+	"ethereum/rpc-network/p2p/simulations/adapters"
+	"ethereum/rpc-network/rpc"
 	"github.com/ethereum/go-ethereum/event"
-	"github.com/ethereum/go-ethereum/p2p"
-	"github.com/ethereum/go-ethereum/p2p/enode"
-	"github.com/ethereum/go-ethereum/p2p/simulations/adapters"
-	"github.com/ethereum/go-ethereum/rpc"
 	"github.com/gorilla/websocket"
 	"github.com/julienschmidt/httprouter"
 )

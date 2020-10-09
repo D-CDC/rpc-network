@@ -22,9 +22,9 @@ import (
 	"sync/atomic"
 	"time"
 
+	"ethereum/rpc-network/params"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/ethereum/go-ethereum/params"
 	"github.com/holiman/uint256"
 )
 

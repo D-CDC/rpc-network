@@ -24,18 +24,18 @@ import (
 	"testing"
 	"time"
 
+	"ethereum/rpc-network/consensus/ethash"
+	"ethereum/rpc-network/core"
+	"ethereum/rpc-network/core/rawdb"
+	"ethereum/rpc-network/core/state"
+	"ethereum/rpc-network/core/types"
+	"ethereum/rpc-network/core/vm"
+	"ethereum/rpc-network/eth/downloader"
+	"ethereum/rpc-network/p2p"
+	"ethereum/rpc-network/params"
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/consensus/ethash"
-	"github.com/ethereum/go-ethereum/core"
-	"github.com/ethereum/go-ethereum/core/rawdb"
-	"github.com/ethereum/go-ethereum/core/state"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/core/vm"
 	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/ethereum/go-ethereum/eth/downloader"
 	"github.com/ethereum/go-ethereum/event"
-	"github.com/ethereum/go-ethereum/p2p"
-	"github.com/ethereum/go-ethereum/params"
 )
 
 // Tests that block headers can be retrieved from a remote chain based on user queries.

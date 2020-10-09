@@ -2,18 +2,18 @@ package sendtx
 
 import (
 	"context"
+	"ethereum/rpc-network/params"
+	"ethereum/rpc-network/rpc"
 	"fmt"
 	"github.com/ethereum/go-ethereum/common/hexutil"
-	"github.com/ethereum/go-ethereum/params"
-	"github.com/ethereum/go-ethereum/rpc"
 	"testing"
 )
 
 func TestBalanceAt(t *testing.T) {
 	ctx := context.Background()
-	ip := "142.93.227.185"
+	ip := "188.166.0.226"
 	//ip := "127.0.0.1"
-	url := "http://"+ ip+":8545"
+	url := "http://" + ip + ":8545"
 	client, err := rpc.DialContext(context.Background(), url)
 	if err != nil {
 		fmt.Printf("Failed to connect to Ethereum node: %v \n", err)
@@ -22,18 +22,17 @@ func TestBalanceAt(t *testing.T) {
 	var result hexutil.Big
 	err = client.CallContext(ctx, &result, "eth_chainId")
 	if err != nil {
-		fmt.Println("eth_chainId",err)
+		fmt.Println("eth_chainId", err)
 		return
 	}
-	str,err := client.SupportedModules()
-	fmt.Println("str",str,"chainid",result.ToInt())
+	str, err := client.SupportedModules()
+	fmt.Println("str", str, "chainid", result.ToInt())
 
 	if result.ToInt().Cmp(params.MainnetChainConfig.ChainID) != 0 {
-		netId,_ := NetworkID(client)
-		fmt.Println("netId",netId,"enode",url)
+		netId, _ := NetworkID(client)
+		fmt.Println("netId", netId, "enode", url)
 	}
 
 	sendMoreTx(client)
 	//QueryDetail(client,url,str,result.ToInt())
 }
-

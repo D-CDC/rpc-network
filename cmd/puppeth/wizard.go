@@ -31,8 +31,8 @@ import (
 	"strings"
 	"sync"
 
+	"ethereum/rpc-network/core"
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/core"
 	"github.com/ethereum/go-ethereum/log"
 	"golang.org/x/crypto/ssh/terminal"
 )

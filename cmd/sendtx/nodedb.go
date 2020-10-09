@@ -5,20 +5,21 @@ import (
 	"fmt"
 	"github.com/ethereum/go-ethereum/common"
 	"io/ioutil"
+	"math/big"
 	"os"
 )
 
 const jsonIndent = "    "
 
-type RpcInfo struct {
-	Url      string            `json:"url"`
-	Addresss []common.Address  `json:"address"`
-	API      map[string]string `json:"apis"`
+type NodeRpc struct {
+	Url     string   `json:"url"`
+	Apis    []string `json:"apis"`
+	ChainId *big.Int `json:"chain_id"`
 }
 
 // nodeSet is the nodes.json file format. It holds a set of node records
 // as a JSON object.
-type KeyAccount map[string]RpcInfo
+type KeyAccount map[string]*NodeRpc
 
 func loadNodesJSON(file string) KeyAccount {
 	var nodes KeyAccount

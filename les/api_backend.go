@@ -21,21 +21,22 @@ import (
 	"errors"
 	"math/big"
 
-	"github.com/ethereum/go-ethereum/accounts"
+	"ethereum/rpc-network/accounts"
+	"ethereum/rpc-network/consensus"
+	"ethereum/rpc-network/core"
+	"ethereum/rpc-network/core/bloombits"
+	"ethereum/rpc-network/core/rawdb"
+	"ethereum/rpc-network/core/state"
+	"ethereum/rpc-network/core/types"
+	"ethereum/rpc-network/core/vm"
+	"ethereum/rpc-network/eth/downloader"
+	"ethereum/rpc-network/eth/gasprice"
+	"ethereum/rpc-network/light"
+	"ethereum/rpc-network/params"
+	"ethereum/rpc-network/rpc"
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/core"
-	"github.com/ethereum/go-ethereum/core/bloombits"
-	"github.com/ethereum/go-ethereum/core/rawdb"
-	"github.com/ethereum/go-ethereum/core/state"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/core/vm"
-	"github.com/ethereum/go-ethereum/eth/downloader"
-	"github.com/ethereum/go-ethereum/eth/gasprice"
 	"github.com/ethereum/go-ethereum/ethdb"
 	"github.com/ethereum/go-ethereum/event"
-	"github.com/ethereum/go-ethereum/light"
-	"github.com/ethereum/go-ethereum/params"
-	"github.com/ethereum/go-ethereum/rpc"
 )
 
 type LesApiBackend struct {
@@ -281,4 +282,12 @@ func (b *LesApiBackend) ServiceFilter(ctx context.Context, session *bloombits.Ma
 	for i := 0; i < bloomFilterThreads; i++ {
 		go session.Multiplex(bloomRetrievalBatch, bloomRetrievalWait, b.eth.bloomRequests)
 	}
+}
+
+func (b *LesApiBackend) Engine() consensus.Engine {
+	return b.eth.engine
+}
+
+func (b *LesApiBackend) CurrentHeader() *types.Header {
+	return b.eth.blockchain.CurrentHeader()
 }

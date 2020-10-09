@@ -20,7 +20,7 @@ import (
 	"math/rand"
 	"testing"
 
-	"github.com/ethereum/go-ethereum/les/utils"
+	"ethereum/rpc-network/les/utils"
 )
 
 func checkU64(t *testing.T, name string, value, exp uint64) {

@@ -19,8 +19,8 @@ package les
 import (
 	"time"
 
+	"ethereum/rpc-network/light"
 	"github.com/ethereum/go-ethereum/common/bitutil"
-	"github.com/ethereum/go-ethereum/light"
 )
 
 const (

@@ -19,18 +19,18 @@ package console
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/ethereum/go-ethereum/accounts/usbwallet"
 	"io"
 	"reflect"
 	"strings"
 	"time"
 
+	"ethereum/rpc-network/accounts/scwallet"
+	"ethereum/rpc-network/console/prompt"
+	"ethereum/rpc-network/internal/jsre"
+	"ethereum/rpc-network/rpc"
 	"github.com/dop251/goja"
-	"github.com/ethereum/go-ethereum/accounts/scwallet"
-	"github.com/ethereum/go-ethereum/accounts/usbwallet"
 	"github.com/ethereum/go-ethereum/common/hexutil"
-	"github.com/ethereum/go-ethereum/console/prompt"
-	"github.com/ethereum/go-ethereum/internal/jsre"
-	"github.com/ethereum/go-ethereum/rpc"
 )
 
 // bridge is a collection of JavaScript utility methods to bride the .js runtime

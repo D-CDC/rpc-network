@@ -23,11 +23,11 @@ import (
 	"sync"
 	"time"
 
+	"ethereum/rpc-network/les/utils"
+	"ethereum/rpc-network/p2p/enode"
 	"github.com/ethereum/go-ethereum/common/mclock"
 	"github.com/ethereum/go-ethereum/ethdb"
-	"github.com/ethereum/go-ethereum/les/utils"
 	"github.com/ethereum/go-ethereum/log"
-	"github.com/ethereum/go-ethereum/p2p/enode"
 	"github.com/ethereum/go-ethereum/rlp"
 )
 

@@ -27,13 +27,13 @@ import (
 	"testing"
 	"time"
 
-	"github.com/ethereum/go-ethereum/accounts/abi/bind"
-	"github.com/ethereum/go-ethereum/accounts/abi/bind/backends"
+	"ethereum/rpc-network/accounts/abi/bind"
+	"ethereum/rpc-network/accounts/abi/bind/backends"
+	"ethereum/rpc-network/contracts/checkpointoracle/contract"
+	"ethereum/rpc-network/core"
+	"ethereum/rpc-network/params"
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/contracts/checkpointoracle/contract"
-	"github.com/ethereum/go-ethereum/core"
 	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/ethereum/go-ethereum/params"
 )
 
 var (

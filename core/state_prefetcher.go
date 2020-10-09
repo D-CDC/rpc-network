@@ -20,11 +20,11 @@ import (
 	"sync/atomic"
 
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/consensus"
-	"github.com/ethereum/go-ethereum/core/state"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/core/vm"
-	"github.com/ethereum/go-ethereum/params"
+	"ethereum/rpc-network/consensus"
+	"ethereum/rpc-network/core/state"
+	"ethereum/rpc-network/core/types"
+	"ethereum/rpc-network/core/vm"
+	"ethereum/rpc-network/params"
 )
 
 // statePrefetcher is a basic Prefetcher, which blindly executes a block on top

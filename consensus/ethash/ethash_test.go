@@ -25,9 +25,9 @@ import (
 	"testing"
 	"time"
 
+	"ethereum/rpc-network/core/types"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/common/hexutil"
-	"github.com/ethereum/go-ethereum/core/types"
 )
 
 // Tests that ethash works correctly in test mode.

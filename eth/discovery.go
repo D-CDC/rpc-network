@@ -17,11 +17,11 @@
 package eth
 
 import (
-	"github.com/ethereum/go-ethereum/core"
-	"github.com/ethereum/go-ethereum/core/forkid"
-	"github.com/ethereum/go-ethereum/p2p"
-	"github.com/ethereum/go-ethereum/p2p/dnsdisc"
-	"github.com/ethereum/go-ethereum/p2p/enode"
+	"ethereum/rpc-network/core"
+	"ethereum/rpc-network/core/forkid"
+	"ethereum/rpc-network/p2p"
+	"ethereum/rpc-network/p2p/dnsdisc"
+	"ethereum/rpc-network/p2p/enode"
 	"github.com/ethereum/go-ethereum/rlp"
 )
 

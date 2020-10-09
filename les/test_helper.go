@@ -28,25 +28,25 @@ import (
 	"testing"
 	"time"
 
-	"github.com/ethereum/go-ethereum/accounts/abi/bind"
-	"github.com/ethereum/go-ethereum/accounts/abi/bind/backends"
+	"ethereum/rpc-network/accounts/abi/bind"
+	"ethereum/rpc-network/accounts/abi/bind/backends"
+	"ethereum/rpc-network/consensus/ethash"
+	"ethereum/rpc-network/contracts/checkpointoracle/contract"
+	"ethereum/rpc-network/core"
+	"ethereum/rpc-network/core/rawdb"
+	"ethereum/rpc-network/core/types"
+	"ethereum/rpc-network/eth"
+	"ethereum/rpc-network/les/checkpointoracle"
+	"ethereum/rpc-network/les/flowcontrol"
+	"ethereum/rpc-network/light"
+	"ethereum/rpc-network/p2p"
+	"ethereum/rpc-network/p2p/enode"
+	"ethereum/rpc-network/params"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/common/mclock"
-	"github.com/ethereum/go-ethereum/consensus/ethash"
-	"github.com/ethereum/go-ethereum/contracts/checkpointoracle/contract"
-	"github.com/ethereum/go-ethereum/core"
-	"github.com/ethereum/go-ethereum/core/rawdb"
-	"github.com/ethereum/go-ethereum/core/types"
 	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/ethereum/go-ethereum/eth"
 	"github.com/ethereum/go-ethereum/ethdb"
 	"github.com/ethereum/go-ethereum/event"
-	"github.com/ethereum/go-ethereum/les/checkpointoracle"
-	"github.com/ethereum/go-ethereum/les/flowcontrol"
-	"github.com/ethereum/go-ethereum/light"
-	"github.com/ethereum/go-ethereum/p2p"
-	"github.com/ethereum/go-ethereum/p2p/enode"
-	"github.com/ethereum/go-ethereum/params"
 )
 
 var (
@@ -223,6 +223,7 @@ func newTestClientHandler(backend *backends.SimulatedBackend, odr *LesOdr, index
 	if client.oracle != nil {
 		client.oracle.Start(backend)
 	}
+	client.handler.start()
 	return client.handler
 }
 

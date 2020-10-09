@@ -22,10 +22,10 @@ import (
 	"sort"
 	"sync"
 
+	"ethereum/rpc-network/core/types"
+	"ethereum/rpc-network/params"
+	"ethereum/rpc-network/rpc"
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/params"
-	"github.com/ethereum/go-ethereum/rpc"
 )
 
 const sampleNumber = 3 // Number of transactions sampled in a block

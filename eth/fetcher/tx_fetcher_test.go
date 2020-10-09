@@ -23,10 +23,10 @@ import (
 	"testing"
 	"time"
 
+	"ethereum/rpc-network/core"
+	"ethereum/rpc-network/core/types"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/common/mclock"
-	"github.com/ethereum/go-ethereum/core"
-	"github.com/ethereum/go-ethereum/core/types"
 )
 
 var (

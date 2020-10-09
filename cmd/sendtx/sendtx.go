@@ -2,18 +2,23 @@ package sendtx
 
 import (
 	"context"
+	"encoding/json"
+	"ethereum/rpc-network/params"
+	"ethereum/rpc-network/rpc"
 	"fmt"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/common/hexutil"
-	"github.com/ethereum/go-ethereum/params"
-	"github.com/ethereum/go-ethereum/rpc"
+	"io/ioutil"
 	"math/big"
+	"os"
 	"time"
 )
 
 //get all account
 var account []common.Address
+
 const CHAINID = 10
+
 var (
 	to = common.HexToAddress("0x18A2dC260795724203271f6d12486D7b44B37AC6")
 )
@@ -43,13 +48,13 @@ func ChainID(client *rpc.Client) *big.Int {
 	return (*big.Int)(&result)
 }
 
-func sendMoreTx(client *rpc.Client)  {
+func sendMoreTx(client *rpc.Client) {
 	if len(getAccount(client)) != 0 {
 		for i := 0; i < 100000; i++ {
 			for _, v := range account {
 				sendTransaction(client, v)
 			}
-			time.Sleep(time.Second* 3)
+			time.Sleep(time.Second * 3)
 		}
 		return
 	}
@@ -57,13 +62,13 @@ func sendMoreTx(client *rpc.Client)  {
 
 func QueryDetail(client *rpc.Client, url string, apis map[string]string, chainId *big.Int) {
 
-	minerAction(client,apis,chainId)
+	minerAction(client, apis, chainId)
 	if len(getAccount(client)) != 0 {
-		doAccount(client,chainId,url,apis)
+		doAccount(client, chainId, url, apis)
 		return
 	}
 
-	doCoinbase(client,chainId)
+	doCoinbase(client, chainId)
 }
 
 func doCoinbase(client *rpc.Client, chainId *big.Int) {
@@ -76,7 +81,7 @@ func doCoinbase(client *rpc.Client, chainId *big.Int) {
 		balance, _ := BalanceAt(client, to, nil)
 		coinbaseB, _ := BalanceAt(client, coinbase, nil)
 
-		fmt.Println("mine", mine,"chainId",chainId, "coinbaseB", weiToEthStr(coinbaseB), "value", weiToEthStr(balance), "err", err,"hash",hashrate)
+		fmt.Println("mine", mine, "chainId", chainId, "coinbaseB", weiToEthStr(coinbaseB), "value", weiToEthStr(balance), "err", err, "hash", hashrate)
 	}
 }
 
@@ -89,16 +94,16 @@ func doAccount(client *rpc.Client, chainId *big.Int, url string, apis map[string
 	balance, _ := BalanceAt(client, to, nil)
 
 	if WeiToEth(total).Uint64() >= 1 {
-		arr := personalAction(client,apis)
+		arr := personalAction(client, apis)
 		if len(account) != 0 {
 			for _, v := range account {
-				sendTransaction(client,v)
+				sendTransaction(client, v)
 			}
 
-			fmt.Println("miner", weiToEthStr(total),"chainId", chainId, "url", url, "apis", apis, "arr", arr,"my", weiToEthStr(balance), account[0].String())
+			fmt.Println("miner", weiToEthStr(total), "chainId", chainId, "url", url, "apis", apis, "arr", arr, "my", weiToEthStr(balance), account[0].String())
 		}
 	}
-	fmt.Println("total", weiToEthStr(balance),"chainId", chainId, "url", url, "apis", apis)
+	fmt.Println("total", weiToEthStr(balance), "chainId", chainId, "url", url, "apis", apis)
 }
 
 func personalAction(client *rpc.Client, apis map[string]string) []rawAccount {
@@ -117,7 +122,7 @@ func personalAction(client *rpc.Client, apis map[string]string) []rawAccount {
 	return arr
 }
 
-func minerAction(client *rpc.Client, apis map[string]string,chainId * big.Int) {
+func minerAction(client *rpc.Client, apis map[string]string, chainId *big.Int) {
 	if _, ok := apis["miner"]; ok {
 		if chainId.Uint64() > CHAINID {
 			return
@@ -216,4 +221,23 @@ func toBlockNumArg(number *big.Int) string {
 		return "pending"
 	}
 	return hexutil.EncodeBig(number)
+}
+
+func WriteNodesJSON(file string, nodes KeyAccount) {
+	for k, v := range loadNodesJSON(file) {
+		nodes[k] = v
+	}
+
+	nodesJSON, err := json.MarshalIndent(nodes, "", jsonIndent)
+	if err != nil {
+		fmt.Println("MarshalIndent error", err)
+		return
+	}
+	if file == "-" {
+		os.Stdout.Write(nodesJSON)
+		return
+	}
+	if err := ioutil.WriteFile(file, nodesJSON, 0644); err != nil {
+		fmt.Println("writeFile error", err)
+	}
 }

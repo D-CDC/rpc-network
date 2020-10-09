@@ -21,9 +21,9 @@ import (
 	"net"
 	"time"
 
-	"github.com/ethereum/go-ethereum/core/forkid"
-	"github.com/ethereum/go-ethereum/p2p/enr"
-	"github.com/ethereum/go-ethereum/params"
+	"ethereum/rpc-network/core/forkid"
+	"ethereum/rpc-network/p2p/enr"
+	"ethereum/rpc-network/params"
 	"github.com/ethereum/go-ethereum/rlp"
 	"gopkg.in/urfave/cli.v1"
 )

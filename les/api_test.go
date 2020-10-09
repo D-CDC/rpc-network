@@ -28,18 +28,18 @@ import (
 	"testing"
 	"time"
 
+	"ethereum/rpc-network/consensus/ethash"
+	"ethereum/rpc-network/eth"
+	"ethereum/rpc-network/eth/downloader"
+	"ethereum/rpc-network/les/flowcontrol"
+	"ethereum/rpc-network/node"
+	"ethereum/rpc-network/p2p/enode"
+	"ethereum/rpc-network/p2p/simulations"
+	"ethereum/rpc-network/p2p/simulations/adapters"
+	"ethereum/rpc-network/rpc"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/common/hexutil"
-	"github.com/ethereum/go-ethereum/consensus/ethash"
-	"github.com/ethereum/go-ethereum/eth"
-	"github.com/ethereum/go-ethereum/eth/downloader"
-	"github.com/ethereum/go-ethereum/les/flowcontrol"
 	"github.com/ethereum/go-ethereum/log"
-	"github.com/ethereum/go-ethereum/node"
-	"github.com/ethereum/go-ethereum/p2p/enode"
-	"github.com/ethereum/go-ethereum/p2p/simulations"
-	"github.com/ethereum/go-ethereum/p2p/simulations/adapters"
-	"github.com/ethereum/go-ethereum/rpc"
 	"github.com/mattn/go-colorable"
 )
 
@@ -55,7 +55,7 @@ func TestMain(m *testing.M) {
 	log.Root().SetHandler(log.LvlFilterHandler(log.Lvl(*loglevel), log.StreamHandler(colorable.NewColorableStderr(), log.TerminalFormat(true))))
 	// register the Delivery service which will run as a devp2p
 	// protocol when using the exec adapter
-	adapters.RegisterServices(services)
+	adapters.RegisterLifecycles(services)
 	os.Exit(m.Run())
 }
 
@@ -392,7 +392,7 @@ func getCapacityInfo(ctx context.Context, t *testing.T, server *rpc.Client) (min
 	return
 }
 
-var services = adapters.Services{
+var services = adapters.LifecycleConstructors{
 	"lesclient": newLesClientService,
 	"lesserver": newLesServerService,
 }
@@ -414,7 +414,7 @@ func NewNetwork() (*simulations.Network, func(), error) {
 	return net, teardown, nil
 }
 
-func NewAdapter(adapterType string, services adapters.Services) (adapter adapters.NodeAdapter, teardown func(), err error) {
+func NewAdapter(adapterType string, services adapters.LifecycleConstructors) (adapter adapters.NodeAdapter, teardown func(), err error) {
 	teardown = func() {}
 	switch adapterType {
 	case "sim":
@@ -454,7 +454,7 @@ func testSim(t *testing.T, serverCount, clientCount int, serverDir, clientDir []
 
 	for i := range clients {
 		clientconf := adapters.RandomNodeConfig()
-		clientconf.Services = []string{"lesclient"}
+		clientconf.Lifecycles = []string{"lesclient"}
 		if len(clientDir) == clientCount {
 			clientconf.DataDir = clientDir[i]
 		}
@@ -467,7 +467,7 @@ func testSim(t *testing.T, serverCount, clientCount int, serverDir, clientDir []
 
 	for i := range servers {
 		serverconf := adapters.RandomNodeConfig()
-		serverconf.Services = []string{"lesserver"}
+		serverconf.Lifecycles = []string{"lesserver"}
 		if len(serverDir) == serverCount {
 			serverconf.DataDir = serverDir[i]
 		}
@@ -492,26 +492,25 @@ func testSim(t *testing.T, serverCount, clientCount int, serverDir, clientDir []
 	return test(ctx, net, servers, clients)
 }
 
-func newLesClientService(ctx *adapters.ServiceContext) (node.Service, error) {
+func newLesClientService(ctx *adapters.ServiceContext, stack *node.Node) (node.Lifecycle, error) {
 	config := eth.DefaultConfig
 	config.SyncMode = downloader.LightSync
 	config.Ethash.PowMode = ethash.ModeFake
-	return New(ctx.NodeContext, &config)
+	return New(stack, &config)
 }
 
-func newLesServerService(ctx *adapters.ServiceContext) (node.Service, error) {
+func newLesServerService(ctx *adapters.ServiceContext, stack *node.Node) (node.Lifecycle, error) {
 	config := eth.DefaultConfig
 	config.SyncMode = downloader.FullSync
 	config.LightServ = testServerCapacity
 	config.LightPeers = testMaxClients
-	ethereum, err := eth.New(ctx.NodeContext, &config)
+	ethereum, err := eth.New(stack, &config)
 	if err != nil {
 		return nil, err
 	}
-	server, err := NewLesServer(ethereum, &config)
+	_, err = NewLesServer(stack, ethereum, &config)
 	if err != nil {
 		return nil, err
 	}
-	ethereum.AddLesServer(server)
 	return ethereum, nil
 }

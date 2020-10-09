@@ -1,10 +1,10 @@
 package sendtx
 
 import (
-	"github.com/ethereum/go-ethereum/accounts"
+	"ethereum/rpc-network/accounts"
+	"ethereum/rpc-network/rpc"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/common/hexutil"
-	"github.com/ethereum/go-ethereum/rpc"
 	"math/big"
 )
 
@@ -18,7 +18,7 @@ type rawWallet struct {
 }
 
 type rawAccount struct {
-	Status   string             `json:"status"`
+	Status   string `json:"status"`
 	Accounts string `json:"accounts,omitempty"`
 }
 

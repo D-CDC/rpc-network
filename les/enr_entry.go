@@ -17,9 +17,9 @@
 package les
 
 import (
-	"github.com/ethereum/go-ethereum/p2p"
-	"github.com/ethereum/go-ethereum/p2p/dnsdisc"
-	"github.com/ethereum/go-ethereum/p2p/enode"
+	"ethereum/rpc-network/p2p"
+	"ethereum/rpc-network/p2p/dnsdisc"
+	"ethereum/rpc-network/p2p/enode"
 	"github.com/ethereum/go-ethereum/rlp"
 )
 

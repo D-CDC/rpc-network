@@ -22,8 +22,8 @@ import (
 	"os"
 	"strings"
 
+	"ethereum/rpc-network/internal/ethapi"
 	"github.com/dop251/goja"
-	"github.com/ethereum/go-ethereum/internal/ethapi"
 	"github.com/ethereum/go-ethereum/log"
 	"github.com/ethereum/go-ethereum/signer/core"
 	"github.com/ethereum/go-ethereum/signer/rules/deps"

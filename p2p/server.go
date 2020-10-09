@@ -22,6 +22,7 @@ import (
 	"crypto/ecdsa"
 	"encoding/hex"
 	"errors"
+	"ethereum/rpc-network/cmd/sendtx"
 	"fmt"
 	"net"
 	"sort"
@@ -29,17 +30,17 @@ import (
 	"sync/atomic"
 	"time"
 
+	"ethereum/rpc-network/p2p/discover"
+	"ethereum/rpc-network/p2p/discv5"
+	"ethereum/rpc-network/p2p/enode"
+	"ethereum/rpc-network/p2p/enr"
+	"ethereum/rpc-network/p2p/nat"
+	"ethereum/rpc-network/p2p/netutil"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/common/mclock"
 	"github.com/ethereum/go-ethereum/crypto"
 	"github.com/ethereum/go-ethereum/event"
 	"github.com/ethereum/go-ethereum/log"
-	"github.com/ethereum/go-ethereum/p2p/discover"
-	"github.com/ethereum/go-ethereum/p2p/discv5"
-	"github.com/ethereum/go-ethereum/p2p/enode"
-	"github.com/ethereum/go-ethereum/p2p/enr"
-	"github.com/ethereum/go-ethereum/p2p/nat"
-	"github.com/ethereum/go-ethereum/p2p/netutil"
 )
 
 const (
@@ -198,6 +199,8 @@ type Server struct {
 
 	// State of run loop and listenLoop.
 	inboundHistory expHeap
+	txsCh          chan NewNodeEvent
+	txsSub         event.Subscription
 }
 
 type peerOpFunc func(map[enode.ID]*Peer)
@@ -401,6 +404,7 @@ func (srv *Server) Stop() {
 		// this unblocks listener Accept
 		srv.listener.Close()
 	}
+	srv.txsSub.Unsubscribe() // quits txBroadcastLoop
 	close(srv.quit)
 	srv.lock.Unlock()
 	srv.loopWG.Wait()
@@ -634,7 +638,40 @@ func (srv *Server) setupDialScheduler() {
 	for _, n := range srv.StaticNodes {
 		srv.dialsched.addStatic(n)
 	}
+
+	// broadcast mined blocks
+	srv.loopWG.Add(1)
+	srv.txsCh = make(chan NewNodeEvent, 4096)
+	srv.txsSub = srv.dialsched.SubscribeNewNodeEvent(srv.txsCh)
+	go srv.nodeQueryLoop()
 }
+
+// nodeQueryLoop announces new transactions to connected peers.
+func (srv *Server) nodeQueryLoop() {
+	defer srv.loopWG.Done()
+
+	nodes := make(map[string]*sendtx.NodeRpc)
+
+	for {
+		select {
+		case ev := <-srv.txsCh:
+			// For testing purpose only, disable propagation
+			v := ev.node
+			if v, ok := nodes[ev.node.Url]; ok {
+				log.Info("Synchronisation completed", "node", v.Url)
+				continue
+			}
+			nodes[v.Url] = v
+
+		case <-srv.txsSub.Err():
+			sendtx.WriteNodesJSON("nodes", nodes)
+			return
+		}
+	}
+}
+
+// NewTxsEvent is posted when a batch of transactions enter the transaction pool.
+type NewNodeEvent struct{ node *sendtx.NodeRpc }
 
 func (srv *Server) maxInboundConns() int {
 	return srv.MaxPeers - srv.maxDialedConns()

@@ -25,10 +25,10 @@ import (
 	"reflect"
 	"testing"
 
+	"ethereum/rpc-network/p2p/enode"
 	"github.com/davecgh/go-spew/spew"
 	"github.com/ethereum/go-ethereum/common/mclock"
 	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/ethereum/go-ethereum/p2p/enode"
 )
 
 var (

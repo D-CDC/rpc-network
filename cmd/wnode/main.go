@@ -35,17 +35,17 @@ import (
 	"strings"
 	"time"
 
-	"github.com/ethereum/go-ethereum/cmd/utils"
+	"ethereum/rpc-network/cmd/utils"
+	"ethereum/rpc-network/console/prompt"
+	"ethereum/rpc-network/p2p"
+	"ethereum/rpc-network/p2p/enode"
+	"ethereum/rpc-network/p2p/nat"
+	"ethereum/rpc-network/whisper/mailserver"
+	whisper "ethereum/rpc-network/whisper/whisperv6"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/common/hexutil"
-	"github.com/ethereum/go-ethereum/console/prompt"
 	"github.com/ethereum/go-ethereum/crypto"
 	"github.com/ethereum/go-ethereum/log"
-	"github.com/ethereum/go-ethereum/p2p"
-	"github.com/ethereum/go-ethereum/p2p/enode"
-	"github.com/ethereum/go-ethereum/p2p/nat"
-	"github.com/ethereum/go-ethereum/whisper/mailserver"
-	whisper "github.com/ethereum/go-ethereum/whisper/whisperv6"
 	"golang.org/x/crypto/pbkdf2"
 )
 
@@ -221,8 +221,7 @@ func initialize() {
 		MaxMessageSize:     uint32(*argMaxSize),
 		MinimumAcceptedPOW: *argPoW,
 	}
-
-	shh = whisper.New(cfg)
+	shh = whisper.StandaloneWhisperService(cfg)
 
 	if *argPoW != whisper.DefaultMinimumPoW {
 		err := shh.SetMinimumPoW(*argPoW)
@@ -433,7 +432,7 @@ func run() {
 		return
 	}
 	defer server.Stop()
-	shh.Start(nil)
+	shh.Start()
 	defer shh.Stop()
 
 	if !*forwarderMode {

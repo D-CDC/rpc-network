@@ -26,9 +26,9 @@ import (
 	"sort"
 	"strings"
 
+	"ethereum/rpc-network/p2p/enode"
+	"ethereum/rpc-network/p2p/enr"
 	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/ethereum/go-ethereum/p2p/enode"
-	"github.com/ethereum/go-ethereum/p2p/enr"
 	"github.com/ethereum/go-ethereum/rlp"
 	"golang.org/x/crypto/sha3"
 )

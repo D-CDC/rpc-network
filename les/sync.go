@@ -21,10 +21,10 @@ import (
 	"errors"
 	"time"
 
+	"ethereum/rpc-network/core/rawdb"
+	"ethereum/rpc-network/eth/downloader"
+	"ethereum/rpc-network/light"
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/core/rawdb"
-	"github.com/ethereum/go-ethereum/eth/downloader"
-	"github.com/ethereum/go-ethereum/light"
 	"github.com/ethereum/go-ethereum/log"
 )
 

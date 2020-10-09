@@ -19,10 +19,10 @@ package simulations
 import (
 	"testing"
 
-	"github.com/ethereum/go-ethereum/p2p"
-	"github.com/ethereum/go-ethereum/p2p/enode"
-	"github.com/ethereum/go-ethereum/p2p/enr"
-	"github.com/ethereum/go-ethereum/rpc"
+	"ethereum/rpc-network/p2p"
+	"ethereum/rpc-network/p2p/enode"
+	"ethereum/rpc-network/p2p/enr"
+	"ethereum/rpc-network/rpc"
 )
 
 // NoopService is the service that does not do anything
@@ -66,7 +66,7 @@ func (t *NoopService) APIs() []rpc.API {
 	return []rpc.API{}
 }
 
-func (t *NoopService) Start(server *p2p.Server) error {
+func (t *NoopService) Start() error {
 	return nil
 }
 

@@ -24,9 +24,9 @@ import (
 	"io"
 	"time"
 
+	"ethereum/rpc-network/core/rawdb"
 	"github.com/VictoriaMetrics/fastcache"
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/core/rawdb"
 	"github.com/ethereum/go-ethereum/ethdb"
 	"github.com/ethereum/go-ethereum/log"
 	"github.com/ethereum/go-ethereum/rlp"
@@ -193,7 +193,7 @@ func (dl *diskLayer) Journal(buffer *bytes.Buffer) (common.Hash, error) {
 		dl.genAbort <- abort
 
 		if stats = <-abort; stats != nil {
-			stats.Log("Journalling in-progress snapshot", dl.genMarker)
+			stats.Log("Journalling in-progress snapshot", dl.root, dl.genMarker)
 		}
 	}
 	// Ensure the layer didn't get stale

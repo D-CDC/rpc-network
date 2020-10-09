@@ -25,12 +25,12 @@ import (
 	"sync"
 	"time"
 
+	"ethereum/rpc-network/p2p/enode"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/common/mclock"
 	"github.com/ethereum/go-ethereum/common/prque"
 	"github.com/ethereum/go-ethereum/ethdb"
 	"github.com/ethereum/go-ethereum/log"
-	"github.com/ethereum/go-ethereum/p2p/enode"
 	"github.com/ethereum/go-ethereum/rlp"
 	lru "github.com/hashicorp/golang-lru"
 )
@@ -212,7 +212,7 @@ func (f *clientPool) connect(peer clientPoolPeer, capacity uint64) bool {
 	id, freeID := peer.ID(), peer.freeClientId()
 	if _, ok := f.connectedMap[id]; ok {
 		clientRejectedMeter.Mark(1)
-		log.Debug("Client already connected", "address", freeID, "id", peerIdToString(id))
+		log.Debug("Client already connected", "address", freeID, "id", id.String())
 		return false
 	}
 	// Create a clientInfo but do not add it yet
@@ -277,7 +277,7 @@ func (f *clientPool) connect(peer clientPoolPeer, capacity uint64) bool {
 				f.connectedQueue.Push(c)
 			}
 			clientRejectedMeter.Mark(1)
-			log.Debug("Client rejected", "address", freeID, "id", peerIdToString(id))
+			log.Debug("Client rejected", "address", freeID, "id", id.String())
 			return false
 		}
 		// accept new client, drop old ones
@@ -322,7 +322,7 @@ func (f *clientPool) disconnect(p clientPoolPeer) {
 	// Short circuit if the peer hasn't been registered.
 	e := f.connectedMap[p.ID()]
 	if e == nil {
-		log.Debug("Client not connected", "address", p.freeClientId(), "id", peerIdToString(p.ID()))
+		log.Debug("Client not connected", "address", p.freeClientId(), "id", p.ID().String())
 		return
 	}
 	f.dropClient(e, f.clock.Now(), false)

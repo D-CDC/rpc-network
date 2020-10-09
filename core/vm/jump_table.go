@@ -17,7 +17,7 @@
 package vm
 
 import (
-	"github.com/ethereum/go-ethereum/params"
+	"ethereum/rpc-network/params"
 )
 
 type (

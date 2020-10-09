@@ -17,10 +17,10 @@
 package main
 
 import (
+	"ethereum/rpc-network/p2p/discover"
+	"ethereum/rpc-network/p2p/enode"
 	"github.com/ethereum/go-ethereum/crypto"
 	"github.com/ethereum/go-ethereum/log"
-	"github.com/ethereum/go-ethereum/p2p/discover"
-	"github.com/ethereum/go-ethereum/p2p/enode"
 	"os"
 	"testing"
 	"time"

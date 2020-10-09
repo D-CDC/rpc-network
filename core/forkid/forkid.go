@@ -26,10 +26,10 @@ import (
 	"reflect"
 	"strings"
 
+	"ethereum/rpc-network/core/types"
+	"ethereum/rpc-network/params"
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/core/types"
 	"github.com/ethereum/go-ethereum/log"
-	"github.com/ethereum/go-ethereum/params"
 )
 
 var (

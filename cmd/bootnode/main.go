@@ -24,14 +24,14 @@ import (
 	"net"
 	"os"
 
-	"github.com/ethereum/go-ethereum/cmd/utils"
+	"ethereum/rpc-network/cmd/utils"
+	"ethereum/rpc-network/p2p/discover"
+	"ethereum/rpc-network/p2p/discv5"
+	"ethereum/rpc-network/p2p/enode"
+	"ethereum/rpc-network/p2p/nat"
+	"ethereum/rpc-network/p2p/netutil"
 	"github.com/ethereum/go-ethereum/crypto"
 	"github.com/ethereum/go-ethereum/log"
-	"github.com/ethereum/go-ethereum/p2p/discover"
-	"github.com/ethereum/go-ethereum/p2p/discv5"
-	"github.com/ethereum/go-ethereum/p2p/enode"
-	"github.com/ethereum/go-ethereum/p2p/nat"
-	"github.com/ethereum/go-ethereum/p2p/netutil"
 )
 
 func main() {

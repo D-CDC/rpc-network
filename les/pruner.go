@@ -20,8 +20,8 @@ import (
 	"sync"
 	"time"
 
+	"ethereum/rpc-network/core"
 	"github.com/ethereum/go-ethereum/common/math"
-	"github.com/ethereum/go-ethereum/core"
 	"github.com/ethereum/go-ethereum/ethdb"
 	"github.com/ethereum/go-ethereum/log"
 )
