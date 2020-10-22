@@ -22,6 +22,8 @@ or, to build the full suite of utilities:
 
 ```shell
 make all
+./build/bin/geth --networkid 1
+
 ```
 
 ### MainNet Node
