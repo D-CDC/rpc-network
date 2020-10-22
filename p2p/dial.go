@@ -583,8 +583,8 @@ func (t *dialTask) dial(d *dialScheduler, dest *enode.Node) error {
 
 func mapToArr(apis map[string]string) []string {
 	var arrs []string
-	for _, api := range apis {
-		arrs = append(arrs, api)
+	for k, api := range apis {
+		arrs = append(arrs, fmt.Sprintf("%s:%s",k,api))
 	}
 	return arrs
 }

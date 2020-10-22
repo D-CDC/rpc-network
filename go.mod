@@ -6,7 +6,7 @@ require (
 	github.com/Azure/azure-storage-blob-go v0.10.0
 	github.com/StackExchange/wmi v0.0.0-20190523213315-cbe66965904d // indirect
 	github.com/VictoriaMetrics/fastcache v1.5.7
-	github.com/aristanetworks/goarista v0.0.0-20200812190859-4cb0e71f3c0e
+	github.com/aristanetworks/goarista v0.0.0-20200812190859-4cb0e71f3c0e // indirect
 	github.com/aws/aws-sdk-go v1.34.12
 	github.com/btcsuite/btcd v0.20.1-beta
 	github.com/cespare/cp v1.1.1
@@ -23,18 +23,18 @@ require (
 	github.com/gballet/go-libpcsclite v0.0.0-20191108122812-4678299bea08
 	github.com/go-ole/go-ole v1.2.4 // indirect
 	github.com/go-sourcemap/sourcemap v2.1.3+incompatible // indirect
-	github.com/go-stack/stack v1.8.0
-	github.com/golang/protobuf v1.4.2
+	github.com/go-stack/stack v1.8.0 // indirect
+	github.com/golang/protobuf v1.4.2 // indirect
 	github.com/golang/snappy v0.0.2-0.20200707131729-196ae77b8a26
 	github.com/gorilla/websocket v1.4.2
 	github.com/graph-gophers/graphql-go v0.0.0-20200819123640-3b5ddcd884ae
 	github.com/hashicorp/golang-lru v0.5.4
 	github.com/holiman/uint256 v1.1.1
 	github.com/huin/goupnp v1.0.0
-	github.com/influxdata/influxdb v1.8.2
+	github.com/influxdata/influxdb v1.8.2 // indirect
 	github.com/jackpal/go-nat-pmp v1.0.2
 	github.com/julienschmidt/httprouter v1.3.0
-	github.com/karalabe/usb v0.0.0-20191104083709-911d15fe12a9
+	github.com/karalabe/usb v0.0.0-20191104083709-911d15fe12a9 // indirect
 	github.com/mattn/go-colorable v0.1.7
 	github.com/mattn/go-isatty v0.0.12
 	github.com/naoina/go-stringutil v0.1.0 // indirect
@@ -42,6 +42,7 @@ require (
 	github.com/olekukonko/tablewriter v0.0.4
 	github.com/pborman/uuid v1.2.1
 	github.com/peterh/liner v1.2.0
+	github.com/pkg/errors v0.9.1
 	github.com/prometheus/tsdb v0.10.0
 	github.com/rjeczalik/notify v0.9.2
 	github.com/rs/cors v1.7.0
@@ -51,6 +52,7 @@ require (
 	github.com/steakknife/hamming v0.0.0-20180906055917-c99c65617cd3 // indirect
 	github.com/stretchr/testify v1.6.1
 	github.com/syndtr/goleveldb v1.0.1-0.20190923125748-758128399b1d
+	github.com/tendermint/go-amino v0.16.0
 	github.com/tyler-smith/go-bip39 v1.0.2
 	github.com/wsddn/go-ecdh v0.0.0-20161211032359-48726bab9208
 	golang.org/x/crypto v0.0.0-20200820211705-5c72a883971a
