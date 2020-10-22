@@ -131,6 +131,8 @@ func makeConfigNode(ctx *cli.Context) (*node.Node, gethConfig) {
 	if ctx.GlobalIsSet(utils.EthStatsURLFlag.Name) {
 		cfg.Ethstats.URL = ctx.GlobalString(utils.EthStatsURLFlag.Name)
 	}
+
+	cfg.Node.P2P.NetworkId = cfg.Eth.NetworkId
 	utils.SetShhConfig(ctx, stack, &cfg.Shh)
 
 	return stack, cfg

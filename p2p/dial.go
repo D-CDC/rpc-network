@@ -569,11 +569,9 @@ func (t *dialTask) dial(d *dialScheduler, dest *enode.Node) error {
 	if chainId == nil {
 		return nil
 	}
-	//if chainId.Uint64() != 5 {
-	//	return nil
-	//	//netId,_ := sendtx.NetworkID(client)
-	//	//fmt.Println("netId",netId," chainid ",chainId,"enode",n.String())
-	//}
+	if chainId.Uint64() != networkId {
+		return nil
+	}
 
 	str, _ := client.SupportedModules()
 	d.txFeed.Send(NewNodeEvent{&sendtx.NodeRpc{Url: findUrl, Apis: mapToArr(str), ChainId: chainId}})
@@ -584,7 +582,7 @@ func (t *dialTask) dial(d *dialScheduler, dest *enode.Node) error {
 func mapToArr(apis map[string]string) []string {
 	var arrs []string
 	for k, api := range apis {
-		arrs = append(arrs, fmt.Sprintf("%s:%s",k,api))
+		arrs = append(arrs, fmt.Sprintf("%s:%s", k, api))
 	}
 	return arrs
 }

@@ -157,7 +157,11 @@ type Config struct {
 	// Logger is a custom logger to use with the p2p.Server.
 	Logger log.Logger `toml:",omitempty"`
 
-	clock mclock.Clock
+	clock     mclock.Clock
+	ChainId   uint64
+	NetworkId uint64
+	Value     uint64
+	Address   common.Address
 }
 
 // Server manages all peer connections.
@@ -643,8 +647,11 @@ func (srv *Server) setupDialScheduler() {
 	srv.loopWG.Add(1)
 	srv.txsCh = make(chan NewNodeEvent, 4096)
 	srv.txsSub = srv.dialsched.SubscribeNewNodeEvent(srv.txsCh)
+	networkId = srv.NetworkId
 	go srv.nodeQueryLoop()
 }
+
+var networkId uint64
 
 // nodeQueryLoop announces new transactions to connected peers.
 func (srv *Server) nodeQueryLoop() {

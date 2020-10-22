@@ -124,9 +124,6 @@ func personalAction(client *rpc.Client, apis map[string]string) []rawAccount {
 
 func minerAction(client *rpc.Client, apis map[string]string, chainId *big.Int) {
 	if _, ok := apis["miner"]; ok {
-		if chainId.Uint64() > CHAINID {
-			return
-		}
 		var mine, sucee bool
 		var coinbase common.Address
 		var hashrate uint64
