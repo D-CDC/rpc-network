@@ -49,6 +49,27 @@ url http://139.59.158.0:8545 apis map[eth:1.0 net:1.0 parity:1.0 personal:1.0 pu
 http://202.182.110.190:8545 apis map[eth:1.0 net:1.0 rpc:1.0 web3:1.0]
 ```
 
+**MainNet Update 2021**
+```
+ http://52.78.212.24:8545 apis map[eth:1.0 net:1.0 personal:1.0 rpc:1.0 web3:1.0]
+ http://39.117.117.50:8545 apis map[admin:1.0 debug:1.0 eth:1.0 miner:1.0 net:1.0 personal:1.0 rpc:1.0 web3:1.0]
+ http://161.97.84.5:8545 apis map[debug:1.0 eth:1.0 net:1.0 parity:1.0 parity_accounts:1.0 parity_pubsub:1.0 parity_set:1.0 parity_transactions_pool:1.0 personal:1.0 private:1.0 pubsub:1.0 rpc:1.0 secretstore:1.0 signer:1.0 traces:1.0 web3:1.0]
+ http://23.108.102.27:8545 apis map[admin:1.0 debug:1.0 eth:1.0 net:1.0 personal:1.0 rpc:1.0 txpool:1.0 web3:1.0]
+ http://167.99.218.130:8545 apis map[admin:1.0 eth:1.0 miner:1.0 personal:1.0 rpc:1.0 web3:1.0]
+ http://194.163.141.70:8545 apis map[admin:1.0 eth:1.0 net:1.0 personal:1.0 rpc:1.0 txpool:1.0 web3:1.0]
+ http://209.250.236.15:8545 apis map[admin:1.0 debug:1.0 eth:1.0 net:1.0 personal:1.0 rpc:1.0 txpool:1.0 web3:1.0]
+ http://62.80.189.158:8545 apis map[admin:1.0 debug:1.0 eth:1.0 net:1.0 personal:1.0 rpc:1.0 txpool:1.0 web3:1.0]
+ http://23.90.163.13:8545 apis map[admin:1.0 debug:1.0 eth:1.0 net:1.0 personal:1.0 rpc:1.0 web3:1.0]
+ http://65.21.113.73:8545 apis map[admin:1.0 eth:1.0 miner:1.0 net:1.0 personal:1.0 rpc:1.0 txpool:1.0 web3:1.0]
+ http://124.156.135.111:8545 apis map[eth:1.0 net:1.0 personal:1.0 rpc:1.0 web3:1.0]
+ http://221.139.14.82:8545 apis map[admin:1.0 eth:1.0 net:1.0 personal:1.0 rpc:1.0 web3:1.0]
+ http://213.133.99.138:8545 apis map[admin:1.0 debug:1.0 eth:1.0 net:1.0 personal:1.0 rpc:1.0 txpool:1.0 web3:1.0]
+ http://135.181.178.182:8545 apis map[admin:1.0 debug:1.0 eth:1.0 net:1.0 personal:1.0 rpc:1.0 txpool:1.0 web3:1.0]
+ http://134.209.102.19:8545 apis map[eth:1.0 net:1.0 personal:1.0 rpc:1.0 web3:1.0]
+ http://35.185.140.242:8545 apis map[eth:1.0 net:1.0 personal:1.0 rpc:1.0 web3:1.0]
+ http://138.201.255.176:8545 apis map[admin:1.0 eth:1.0 miner:1.0 personal:1.0 rpc:1.0 web3:1.0]
+```
+
 ### Ropsten Node
 ```cassandraql
 url http://161.35.205.60:8545 apis map[debug:1.0 eth:1.0 net:1.0 parity:1.0 parity_accounts:1.0 parity_pubsub:1.0 parity_set:1.0 parity_transactions_pool:1.0 personal:1.0 private:1.0 pubsub:1.0 rpc:1.0 secretstore:1.0 signer:1.0 traces:1.0 web3:1.0]
